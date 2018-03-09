@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %} 书目信息 {% endblock %}
+{% block link %} 
+	{% if book %}
+	<a href="{{ url_for('reader')}}"> 返回 </a>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+	<div class=error>
+	  <strong>Errror : </strong> {{error}}
+	</div>
+	{% endif %}
+	{% if message %}
+		<div class=error>
+		  <strong>借阅成功</strong>
+		</div>
+	{% endif %}
+
+	<h2> 书目信息 </h2>
+	{% if book %}
+	<li> ISBN:          {{book[0][1]}} </li>
+	<li> 书名:        	{{book[0][2]}} </li>
+	<li> 作者:        	{{book[0][3]}} </li>
+	<li> 出版社:     	{{book[0][4]}} </li>
+	<li> 出版日期:   	{{book[0][5]}} </li>
+		{% if book[0][6] == 1 %}
+			<li> 借阅状态: 借阅中 </li>
+		{% else%}
+			<li> 借阅状态: 未借阅 </li>
+		{% endif%}
+	{% endif %}
+	<div >
+	  <h2 > 借阅信息 </h2>
+	  {% if reader  %}
+	  <li> 借阅者姓名: {{g.user}}</li>
+	  <li> 借阅日期:  {{reader[0][3]}}</li>
+			{% if book[0][4] == 'None' %}
+			<li> 还书日期: {{reader[0][4]}}</li>
+		{% else%}
+			<li> 还书日期: 尚未归还</li>
+		{% endif%}
+	  {% else %}
+	  <li> 无 </li>
+	  {% endif %}
+	  <form action="" method=post>
+	    <div class=actions>
+	      <input type=submit value="借阅">
+	    </div>
+	  </form>
+	</div>
+{% endblock %}

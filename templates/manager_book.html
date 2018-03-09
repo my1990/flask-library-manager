@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %} 图书主页 {% endblock %}
+
+{% block link %}
+	<a href="{{ url_for('manager_books') }}"> 返回  </a> | 
+	{% if book %}
+	<a href="{{ url_for('manager_modify', id=book[0])}}"> 修改 </a>
+	{% endif%}
+{% endblock %}
+{% block body  %}
+	<h2> 图书信息 </h2>
+	{% if book %}
+	<li> ISBN:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book[1]}} </li>
+	<li> 书名:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book[2]}}</li>
+	<li> 作者:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book[3]}} </li>
+	<li> 出版社:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{{book[4]}} </li>
+	<li> 出版日期:&nbsp;&nbsp; &nbsp;{{book[5]}} </li>
+	{% endif %}
+	<h2 > 借阅信息 </h2>
+	{% if reader  %}
+	<li> 借阅者姓名 {{reader.user_name}}</li>
+	<li> 借阅日期  {{reader.date_borrow}}</li>
+	<li> 还书日期  {{reader.date_return}}</li>
+	<form action="" method=post>
+	  <div class=actions>
+	    <input type=submit value="归还">
+	    </div>
+	</form>
+	{% else %}
+	<li> 无 </li> 
+	{% endif %}
+{% endblock %}

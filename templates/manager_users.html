@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block title%} 用户管理 {% endblock %}
+{% block link%} 
+	<a href="{{ url_for('manager')}}"> 返回 </a>
+	<a href="{{ url_for('manager_books') }}"> 图书管理 </a> |
+	<a href="{{ url_for('manager_users') }}"> 用户管理 </a> |
+	<a href="{{ url_for('manager_tables') }}"> 报表管理 </a>
+{%  endblock%}
+{% block body%}
+	<h2> 用户管理 </h2>
+	<table width="600" border="1", align="center">
+	  <tr>
+	    <th align="center"> 用户名 </th>
+	    <th align="center"> 用户信息 </th>
+	  </tr>
+	  {% for user in users%}
+	  <tr>
+	    <th align="center"> {{user[1]}}</th>
+	    <th align="center"> <a href="{{ url_for('manager_user', id=user[0])}}"> 点击进入 </a> </th>
+	  </tr>
+	  {% endfor %}
+	</table>
+{% endblock%}

@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+{% block title%} 功能导航 {% endblock %}
+{% block link%} 
+<style type="text/css">  
+ ul{  
+   list-style:none;  
+}  
+ul li{  
+   float:left;  
+   line-height:40px;  
+   text-align:center;  
+   position:relative;  
+}  
+a{  
+    text-decoration:none;  
+    color:#000000;  
+    display:block;/*将a行内元素转变成块级元素*/  
+    width:90px;  
+    height:40px;  
+}  
+a:hover{  
+    background-color:#666666;  
+    color:red;
+}  
+/*二级下拉菜单样式设置*/  
+ul li ul li{  
+    float:none;  
+    background-color:#EEEEEE;  
+}  
+ul li ul{  
+    position:absolute;  
+    top:40px;  
+    left:0px;  
+    display:none;/*默认状态下或鼠标离开时隐藏*/  
+    width:90px;  
+}  
+/*为了兼容IE7写的CSS样式，但是必须写在a:hover前面*/  
+ul li ul li a:link,ul li ul li a:visited{  
+    background-color:#EEEEEE;  
+}  
+ul li ul li a:hover{  
+    background-color:#FFFFFF;
+}  
+/*鼠标滑过一级菜单的元素时显示下拉菜单*/  
+ul li:hover ul{  
+    display:block;  
+}   
+  
+</style>  
+<div class="test">  
+    <ul>  
+        <li>
+			<div>
+				<a href="{{ url_for('logout')}}"> 注销 [{{ g.user}}]</a>
+			</div>
+		</li>  
+           
+		<li><a href="{{ url_for('manager_books') }}"> 图书管理 </a> 
+			<ul>
+				<li>
+					<div>
+						<a href="{{ url_for('manager_books_add') }}"> 添加 </a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<a href="{{ url_for('manager_books_delete') }}"> 删除 </a>
+					</div>
+				</li>
+			</ul>
+		</li>
+		
+		<li>
+			<a href="{{ url_for('manager_users') }}"> 用户管理 </a>  
+		</li>
+		
+		<li>
+			<a href="{{ url_for('manager_tables') }}"> 报表管理 </a>
+		</li>
+		
+    </ul>  
+</div>  
+
+{%  endblock%}

@@ -1,0 +1,16 @@
+<!doctype html>
+<title> {% block title %} 图书资料信息管理系统 {% endblock %} </title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='index.css') }}">
+<div class=page>
+  <h1>图书资料信息管理系统</h1>
+  <div class=navigation>
+    {% block link %}{% endblock %}
+  </div>
+  <div class=body>
+    {% block body %}{% endblock %}
+   </div>
+  <div class=footer>
+     &mdash; by 张盼 715100012030 计算机科学与技术
+  </div>
+</div>
+    

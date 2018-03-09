@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %} 阅读记录 {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('reader')}}"> 返回 </a>
+{% endblock %}
+{% block body %}
+	<table width="600" border="1" align="center">
+	  <tr>
+	    <th align="center"> 书名 </th>
+	    <th align="center"> 借书日期 </th>	
+	    <th align="center"> 还书日期 </th>
+	    <th align="center"> 状态 </th>
+		<th align="center"> 操作 </th>
+	  </tr>
+	  {% for histroy in histroys %}
+	  <tr>
+	    <th align="center"> {{histroy[1][0]}} </th>
+	    <th align="center"> {{histroy[3]}}</th>
+	    <th align="center"> {{histroy[4]}} </th>
+		  {% if histroy[3] %}
+		  	<th align="center"> 借阅中 </th>
+		  	<th align="center">
+				<form action=""  method=post>
+					<div class=actions>
+					  <input type=submit value="还书" >
+					</div>
+				</form>
+			</th>
+		  {% else %}
+		  	<th align="center"> histroy[3] </th>
+		  	<th align="center"> 已还 </th>
+		  {% endif %}
+
+	  </tr>
+	  {% endfor %}
+	</table>
+
+
+{% endblock %}

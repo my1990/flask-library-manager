@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %} 图书主页 {% endblock %}
+
+{% block link %}
+	<a href="{{ url_for('manager_books') }}"> 返回  </a> |
+	<a href="{{ url_for('manager_books') }}"> 图书管理 </a> |
+	<a href="{{ url_for('manager_users') }}"> 用户管理 </a> |
+	<a href="{{ url_for('manager_tables') }}"> 报表管理 </a>
+{% endblock %}
+{% block body  %}
+	<h2> 图书借阅量排行榜 </h2>
+	<form class="manager_table" method="post" action="">
+		1、<input type="text" name="book1" value="{{ books }}"/><br>
+		2、<input type="text" name="book2" /><br>
+		3、<input type="text" name="book3" /><br>
+		4、<input type="text" name="book4" /><br>
+		5、<input type="text" name="book5" /><br>
+	</form>
+
+	<h2 > 用户借阅量排行榜信息 </h2>
+	<form class="manager_table" method="post" action="">
+		1、<input type="text" name="user1" /><br>
+		2、<input type="text" name="user2" /><br>
+		3、<input type="text" name="user3" /><br>
+		4、<input type="text" name="user4" /><br>
+		5、<input type="text" name="user5" /><br><br><br><br><br>
+	</form>
+
+{% endblock %}
